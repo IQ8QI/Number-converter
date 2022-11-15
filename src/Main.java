@@ -3,8 +3,11 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         //I V X L C D M
-        if(args[0].charAt(0) == '-'){
-
+        List<String> parameters = new ArrayList<>();
+        for(String arg : args){
+            if(arg.charAt(0) == '-') {
+                parameters.add(arg);
+            }
         }
     }
 

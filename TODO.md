@@ -1,5 +1,7 @@
 # TODO
- - Create function to change roman to decimal
- - Write manual, invoke manual on --help or -h or ? input
- - Fix .gitignore
- - Improve README.md
+ - Create function to convert roman to decimal
+ - Create function to convert decimal to roman
+ - Write manual
+ - Invoke manual on --help or -h or ? input
+ - <del>Fix .gitignore</del>
+ - <del>Improve README.md</del>

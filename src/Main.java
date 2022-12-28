@@ -62,8 +62,54 @@ public class Main {
 
         System.out.println("parameters" + parameters);
         System.out.println("values" + values);
-        System.out.println(changeNumberSystem(Integer.parseInt(values.get(0)), inputSystem, outputSystem));
 
+        System.out.println(changeNumberSystem(values.get(0), inputSystem, outputSystem));
+    }
+
+    /**
+     * Function translates number from inputSystem to outputSystem
+     * @param input number to be translated given in inputSystem
+     * @param inputSystem system of number to be translated from
+     * @param outputSystem system of number to be translated to
+     * @return ouputs result of the translation as String
+     */
+    public static String changeNumberSystem(String input, int inputSystem, int outputSystem){
+        if(inputSystem == outputSystem)
+            return input;
+        
+        int decimal = anyToDecimal(input, inputSystem);
+        return decimalToAny(decimal, outputSystem);
+    }
+
+    /**
+     * Function translates number from inputSystem to decimal system, input system cannot be roman
+     * @param input value to be translated
+     * @param inputSystem system of input
+     * @return returns translated number
+     */
+    public static int anyToDecimal(String input, int inputSystem){
+        if(inputSystem == 0)
+            return romanToDecimal(input);
+
+        int size = input.length();
+        int result = 0;
+        for(int i = 0; i < size; i++){
+            result += Character.getNumericValue(input.charAt(size - i - 1)) * inputSystem ^ i;
+        }
+        return result;
+    }
+
+    /**
+     * Function converts number from decimal system to any other system
+     * @param input value of number to be converted
+     * @param outputSystem type of system to be conveted to
+     * @return number value after conversion
+     */
+    public static String decimalToAny(int input, int outputSystem){
+        if(outputSystem == 0)
+            return decimalToRoman(input);
+        
+        
     }
 
     /**
@@ -101,16 +147,7 @@ public class Main {
         return "work in progress";
     }
 
-    /**
-     * Function translates number from inputSystem to outputSystem
-     * @param input number to be translated given in inputSystem
-     * @param inputSystem system of number to be translated from
-     * @param outputSystem system of number to be translated to
-     * @return ouputs result of the translation as String
-     */
-    public static String changeNumberSystem(int input, int inputSystem, int outputSystem){
-        return "work in progress";
-    }
+
 
     /**
      * Display manual for user and exit, same as README.md

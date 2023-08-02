@@ -1,7 +1,11 @@
 # TODO
- - Create function to convert roman to decimal
  - Create function to convert decimal to roman
- - Create function to convert between different number systems
+ - Create function to convert between decimal and binary to understand how does it work
+ - Create function witch converts input string with system base above 10 into ArrayList of numbers with chars converted into numbers, for example "2a4g" -> [2, 11, 4, 17]
+ - Add automatic testing on GitHub (Maven is user for that?)
+ - Write few test cases
+ - When manual is invoked, can it be read from README.md?
+ - <del>Create function to convert roman to decimal</del>
  - <del>Write manual</del>
  - <del>Invoke manual on --help or -h or ? input</del>
  - <del>Fix .gitignore</del>

@@ -2,8 +2,8 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        /**
-         * First divide inputs for parameters and values and store them in separate lists
+        /*
+         * Divide inputs for parameters and values and store them in separate lists
          */
         for(int i = 0; i < args.length; i++)
             args[i] = args[i].toUpperCase();
@@ -17,19 +17,14 @@ public class Main {
             else
                 values.add(arg);
 
-        processInputs(parameters, values);
-    }
-
-    public static void processInputs(List<String> parameters, List<String> values){
-        /**
-         * Dispaly help if input is incorrect
-         * or if user asks for help
+        /*
+         * Display help if input is incorrect, or if user asks for help
          */
         if(parameters.isEmpty() || parameters.get(0).charAt(0) == 'H' || parameters.get(0).charAt(0) == '?')
             displayManual();
 
-        /**
-         * Set input system and ouput system
+        /*
+         * Set input system and output system
          */
         int inputSystem;
         int outputSystem;
@@ -60,94 +55,23 @@ public class Main {
         else
             outputSystem = Integer.parseInt(parameters.get(1));
 
-        System.out.println("parameters" + parameters);
-        System.out.println("values" + values);
+        System.out.println("parameters " + parameters);
+        System.out.println("values " + values);
 
-        System.out.println(changeNumberSystem(values.get(0), inputSystem, outputSystem));
-    }
-
-    /**
-     * Function translates number from inputSystem to outputSystem
-     * @param input number to be translated given in inputSystem
-     * @param inputSystem system of number to be translated from
-     * @param outputSystem system of number to be translated to
-     * @return ouputs result of the translation as String
+    /*
+     * Decide witch conversion methods to use, in order to convert the number
+     * from given inputSystem to given outputSystem.
      */
-    public static String changeNumberSystem(String input, int inputSystem, int outputSystem){
-        if(inputSystem == outputSystem)
-            return input;
-        
-        int decimal = anyToDecimal(input, inputSystem);
-        return decimalToAny(decimal, outputSystem);
-    }
 
-    /**
-     * Function translates number from inputSystem to decimal system, input system cannot be roman
-     * @param input value to be translated
-     * @param inputSystem system of input
-     * @return returns translated number
-     */
-    public static int anyToDecimal(String input, int inputSystem){
-        if(inputSystem == 0)
-            return romanToDecimal(input);
-
-        int size = input.length();
-        int result = 0;
-        for(int i = 0; i < size; i++){
-            result += Character.getNumericValue(input.charAt(size - i - 1)) * inputSystem ^ i;
+        if(inputSystem == outputSystem) {
+            System.out.println(values.get(0));
+            System.exit(0);
         }
-        return result;
-    }
-
-    /**
-     * Function converts number from decimal system to any other system
-     * @param input value of number to be converted
-     * @param outputSystem type of system to be conveted to
-     * @return number value after conversion
-     */
-    public static String decimalToAny(int input, int outputSystem){
-        if(outputSystem == 0)
-            return decimalToRoman(input);
         
-        
-    }
-
-    /**
-     * Function translates number from roman system to decimal system
-     * @param roman number to be translated
-     * @return Intiger translated from roman number
-     */
-    public static int romanToDecimal(String roman){
-        //I V X L C D M
-        roman = roman.toUpperCase();
-        List<Character> correctInputChars = new ArrayList<>();
-        //char[] correctInputChar = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
-        correctInputChars.add('I');
-        correctInputChars.add('V');
-        correctInputChars.add('X');
-        correctInputChars.add('L');
-        correctInputChars.add('C');
-        correctInputChars.add('D');
-        correctInputChars.add('M');
-        int result = 0;
-        int len = roman.length();
-        for(int i = len - 1; i >= 0; i--){
-            if(!correctInputChars.contains(roman.charAt(i)))
-                throw new InputMismatchException("Incorrect input at: " + roman.charAt(i-1) + "->" + roman.charAt(i) + "<-" + roman.charAt(i+1));
+        if(inputSystem == 0){
+            int value = Convert.romanToDecimal(values.get(0));
         }
-        return -1;
     }
-
-    /**
-     * Function translates number from decimal systemto romrna system
-     * @param decimal number to be translated
-     * @return String roman number
-     */
-    public static String decimalToRoman(int decimal){
-        return "work in progress";
-    }
-
-
 
     /**
      * Display manual for user and exit, same as README.md

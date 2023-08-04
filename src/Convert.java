@@ -95,10 +95,41 @@ public class Convert {
 
     /**
      * Function translates number from decimal system to roman system
-     * @param decimal number to be translated
+     * @param decimal Integer number to be translated
      * @return String roman number
      */
     public static String decimalToRoman(int decimal){
         return "work in progress";
+    }
+
+    public static final short ascii_1 = 48;
+    public static final short ascii_9 = 57;
+    public static final short ascii_A = 65;
+    public static final short ascii_Z = 90;
+    public static final short ascii_a = 97;
+    public static final short ascii_z = 122;
+    /**
+     * Function creates ArrayList with Integers based on number
+     * Function translates numeral letters into numbers above 10
+     * For example "23D1H" -> [2, 3, 14, 1, 18]
+     * @param inputNumber String of number with base system above 10
+     * @return ArrayList<Integer> of numbers from give numbers position
+     */
+    public static List<Integer> inputStringToArrayList(String inputNumber){
+        int i;
+        List<Integer> result = new ArrayList<>();
+        for(Character c : inputNumber.toCharArray()){
+            i = (int) c;
+            if(i >= ascii_1 && i <= ascii_9){
+                result.add(11 + i - ascii_1);
+            } else if(i >= ascii_a && i <= ascii_z){
+                result.add(11 + i - ascii_a);
+            } else if(i >= ascii_A && i <= ascii_Z){
+                result.add(11 + i - ascii_A);
+            } else {
+                throw new InputMismatchException("Incorrect input at " + (char) i);
+            }
+        }
+        return result;
     }
 }

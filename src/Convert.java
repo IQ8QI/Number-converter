@@ -132,4 +132,26 @@ public class Convert {
         }
         return result;
     }
+
+    /**
+     * Translates List<Integer> into a String.
+     * Numbers above 9 becomes letters starting at A.
+     * For example [2, 3, 14, 1, 18] -> "23D1H".
+     * Throws InputMismatchException if number is 34 or bigger.
+     * @param inputList list of integers to be translated into string, value cannot exceed 33
+     * @return string expressing values from list
+     */
+    public static String arrayListToInputString(List<Integer> inputList){
+        StringBuilder builder = new StringBuilder();
+        for(Integer i : inputList){
+            if(i >= 0 && i <= 9){
+                builder.append(Integer.toString(i));
+            } else if(i <= 34){
+                builder.append(ascii_A + i - 10);
+            } else {
+                throw new InputMismatchException(i + " is not a valid number");
+            }
+        }
+        return builder.toString();
+    }
 }

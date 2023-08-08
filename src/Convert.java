@@ -154,4 +154,22 @@ public class Convert {
         }
         return builder.toString();
     }
+
+    /**
+     * Function translates number from non-Roman number system to decimal system.
+     * @param inputList List<Integer> containing values of consequent numbers before translation.
+     * @param inputSystem Integer 1 - 34 symbolizing the base of number.
+     * @return Integer with value of number after conversion.
+     */
+    public static int nonRomanToDecimal(List<Integer> inputList, int inputSystem){
+        if(inputSystem < 1 || inputSystem > 34)
+            throw new InputMismatchException("Impossible to translate number to " + inputSystem + "-base system");
+
+        int result = 0;
+        int size = inputList.size();
+        for(int i = size - 1; i >= 0; i--){
+            result += inputList.get(i) * Math.pow(inputSystem, size - i - 1);
+        }
+        return result;
+    }
 }

@@ -163,13 +163,39 @@ public class Convert {
      */
     public static int nonRomanToDecimal(List<Integer> inputList, int inputSystem){
         if(inputSystem < 1 || inputSystem > 34)
-            throw new InputMismatchException("Impossible to translate number to " + inputSystem + "-base system");
+            throw new InputMismatchException("Impossible to translate number from " + inputSystem + "-base system");
 
         int result = 0;
         int size = inputList.size();
         for(int i = size - 1; i >= 0; i--){
             result += inputList.get(i) * Math.pow(inputSystem, size - i - 1);
         }
+        return result;
+    }
+
+    /**
+     * Function translates integer number from decimal, or base-10, number system,
+     * into new number with outputSystem-base system.
+     * @param inputValue decimal integer to be translated.
+     * @param outputSystem type of result number base system. Legal values 1-34.
+     * @return ArrayList<Integer> with continuous digits
+     */
+    public static List<Integer> decimalToNonRoman(int inputValue, int outputSystem){
+        if(outputSystem < 1 || outputSystem > 34)
+            throw new InputMismatchException("Impossible to translate number to " + outputSystem + "-base system");
+
+        List<Integer> result = new ArrayList<>();
+        while(inputValue != 0){
+            result.add(inputValue % outputSystem);
+            inputValue /= outputSystem;
+        }
+        int size = result.size();
+        int tmp;
+        for(int i = 0; i < size / 2; i++){
+            tmp = result.get(i);
+            result.set(i, result.get(size - i - 1));
+        }
+
         return result;
     }
 }

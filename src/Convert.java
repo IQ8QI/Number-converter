@@ -145,7 +145,7 @@ public class Convert {
         StringBuilder builder = new StringBuilder();
         for(Integer i : inputList){
             if(i >= 0 && i <= 9){
-                builder.append(Integer.toString(i));
+                builder.append(i);
             } else if(i <= 34){
                 builder.append(ascii_A + i - 10);
             } else {
@@ -189,11 +189,13 @@ public class Convert {
             result.add(inputValue % outputSystem);
             inputValue /= outputSystem;
         }
+
         int size = result.size();
         int tmp;
         for(int i = 0; i < size / 2; i++){
             tmp = result.get(i);
             result.set(i, result.get(size - i - 1));
+            result.set(size - i - 1, tmp);
         }
 
         return result;

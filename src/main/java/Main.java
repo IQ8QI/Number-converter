@@ -87,7 +87,7 @@ public class Main {
                     numconv [input system] [output system] [input number]
                                 
                 # Examples
-                Convert Roman number to decimal   
+                Convert Roman number to decimal
                     numconv -r MMMCV -10
                     numconv --roman --decimal CCVI
                                 

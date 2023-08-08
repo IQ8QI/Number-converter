@@ -1,7 +1,7 @@
 # TODO
- - Add automatic testing on GitHub (Maven is user for that or JUnit?)
- - Write few more test cases
+ - Write few more test cases in JUnit
  - When manual is invoked, can it read from README.md?
+ - <del>Add testing base with JUnit and Maven</del>
  - <del>Create function to convert decimal to roman</del>
  - <del>Create function to translate Decimal to any non-Roman</del>
  - <del>Create function to translate non-Roman to Decimal</del>

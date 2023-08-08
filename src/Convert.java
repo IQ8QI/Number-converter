@@ -99,7 +99,53 @@ public class Convert {
      * @return String roman number
      */
     public static String decimalToRoman(int decimal){
-        return "work in progress";
+        if(decimal < 1 || decimal > 3999)
+            throw new InputMismatchException("Unable to convert " + decimal + " to Roman number system");
+
+        StringBuilder builder = new StringBuilder();
+        while(decimal > 0){
+            if(decimal >= 1000) {
+                builder.append('M');
+                decimal -= 1000;
+            } else if(decimal >= 900){
+                builder.append("CM");
+                decimal -= 900;
+            } else if(decimal >= 500){
+                builder.append('D');
+                decimal -= 500;
+            } else if(decimal >= 400){
+                builder.append("CD");
+                decimal -= 400;
+            } else if(decimal >= 100) {
+                builder.append('C');
+                decimal -= 100;
+            } else if(decimal >= 90){
+                builder.append("XC");
+                decimal -= 90;
+            } else if(decimal >= 50){
+                builder.append('L');
+                decimal -= 50;
+            } else if(decimal >= 40){
+                builder.append("XL");
+                decimal -= 40;
+            } else if(decimal >= 10){
+                builder.append('X');
+                decimal -= 10;
+            } else if(decimal >= 9){
+                builder.append("IX");
+                decimal -= 9;
+            } else if(decimal >= 5){
+                builder.append('V');
+                decimal -= 5;
+            } else if(decimal >= 4){
+                builder.append("IV");
+                decimal -= 4;
+            } else {
+                builder.append('I');
+                decimal--;
+            }
+        }
+        return builder.toString();
     }
 
     public static final short ascii_1 = 48;

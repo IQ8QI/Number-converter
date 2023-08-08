@@ -1,9 +1,9 @@
 # TODO
- - Create function to convert decimal to roman
- - Create function to translate Decimal to any non-Roman
  - Add automatic testing on GitHub (Maven is user for that or JUnit?)
  - Write few more test cases
- - When manual is invoked, can it be read from README.md?
+ - When manual is invoked, can it read from README.md?
+ - <del>Create function to convert decimal to roman</del>
+ - <del>Create function to translate Decimal to any non-Roman</del>
  - <del>Create function to translate non-Roman to Decimal</del>
  - <del>Create function opposite to inputStringToArrayList. Working example:  [2, 11, 4, 17] -> "2a4g"</del>
  - <del>Create function witch converts input string with system base above 10 into ArrayList of numbers with chars converted into numbers, for example "2a4g" -> [2, 11, 4, 17]</del>

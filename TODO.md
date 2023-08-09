@@ -1,6 +1,8 @@
 # TODO
- - Write few more test cases in JUnit
+ - Write more test cases in JUnit to test all functions
+ - When all functions are tested, finnish writing the program
  - When manual is invoked, can it read from README.md?
+ - Create installer or manual installation instruction for Windows and Linux
  - <del>Add testing base with JUnit and Maven</del>
  - <del>Create function to convert decimal to roman</del>
  - <del>Create function to translate Decimal to any non-Roman</del>

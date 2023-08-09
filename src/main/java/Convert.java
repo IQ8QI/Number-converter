@@ -89,6 +89,9 @@ public class Convert {
                 }
             }
             i--;
+            if(result > 3999){
+                throw new InputMismatchException("Can't convert number above 3999");
+            }
         }
         return result;
     }

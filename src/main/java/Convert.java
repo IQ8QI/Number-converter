@@ -212,16 +212,22 @@ public class Convert {
      * @param inputSystem Integer 1 - 34 symbolizing the base of number.
      * @return Integer with value of number after conversion.
      */
-    public static int nonRomanToDecimal(List<Integer> inputList, int inputSystem){
-        if(inputSystem < 1 || inputSystem > 34)
+    public static String nonRomanToDecimal(List<Integer> inputList, int inputSystem){
+        if(inputSystem < 1 || inputSystem > 36)
             throw new InputMismatchException("Impossible to translate number from " + inputSystem + "-base system");
+
+        if(inputSystem == 1){
+            return Integer.toString(inputList.size() - 1);
+        }
 
         int result = 0;
         int size = inputList.size();
         for(int i = size - 1; i >= 0; i--){
+            if(inputList.get(i) >= inputSystem || inputList.get(i) < 0)
+                throw new InputMismatchException("Number " + inputList.get(i) + " does not belong to " + inputSystem + "-base number system");
             result += inputList.get(i) * Math.pow(inputSystem, size - i - 1);
         }
-        return result;
+        return Integer.toString(result);
     }
 
     /**

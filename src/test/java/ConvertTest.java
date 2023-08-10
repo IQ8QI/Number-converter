@@ -56,4 +56,20 @@ public class ConvertTest {
         assertThrows(InputMismatchException.class, () -> Convert.arrayListToInputString(Arrays.asList(25, -5, 7)));
         assertThrows(InputMismatchException.class, () -> Convert.arrayListToInputString(Arrays.asList(5,9,15,30,98,2)));
     }
+
+    @Test
+    @DisplayName("Testing Convert.nonRomanToDecimal")
+    void testNonRomanToDecimal(){
+        assertEquals("2400", Convert.nonRomanToDecimal(Arrays.asList(2,1,1,2,0,0), 4), "4-base 211200 is 10-base 2400");
+        assertEquals("4591", Convert.nonRomanToDecimal(Arrays.asList(6,2,6,1), 9), "9-base 6261 is 10-base 4591");
+        assertEquals("109", Convert.nonRomanToDecimal(Arrays.asList(7, 11), 14), "14-base 7B is 10-base 109");
+        assertEquals("2400", Convert.nonRomanToDecimal(Arrays.asList(4, 21, 2), 22), "22-base 4L2 is 10-base 2400");
+        assertEquals("4591", Convert.nonRomanToDecimal(Arrays.asList(3, 33, 1), 34), "34-base 3X1 is 10-base 4591");
+        assertEquals( "6", Convert.nonRomanToDecimal(Arrays.asList(0,0,0,0,0,0,0), 1), "1-base 0000000 is 10-base 6");
+        assertThrows(InputMismatchException.class, () -> Convert.nonRomanToDecimal(Arrays.asList(1, 6, 8), 0));
+        assertThrows(InputMismatchException.class, () -> Convert.nonRomanToDecimal(Arrays.asList(2, 6, 10), 40));
+        assertThrows(InputMismatchException.class, () -> Convert.nonRomanToDecimal(Arrays.asList(2, 6, 10), 10));
+        assertThrows(InputMismatchException.class, () -> Convert.nonRomanToDecimal(Arrays.asList(35, 29, 4, 7, 16), 34));
+        assertThrows(InputMismatchException.class, () -> Convert.nonRomanToDecimal(Arrays.asList(9, 4, 31, -5, 15), 32));
+    }
 }

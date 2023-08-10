@@ -22,7 +22,7 @@ public class Convert {
         correctInputChars.add('M');
         for(int i = 0; i < input.length(); i++){
             if(!correctInputChars.contains(input.charAt(i)))
-                throw new InputMismatchException("Incorrect input at: " + input.charAt(i-1) + "->" + input.charAt(i) + "<-" + input.charAt(i+1));
+                throw new InputMismatchException("Incorrect input at: " + input.charAt(i));
         }
 
 
@@ -165,6 +165,8 @@ public class Convert {
      * @return ArrayList<Integer> of numbers from give numbers position
      */
     public static List<Integer> inputStringToArrayList(String inputNumber){
+        if(inputNumber.length() == 0)
+            throw new InputMismatchException("Empty input");
         int i;
         List<Integer> result = new ArrayList<>();
         for(Character c : inputNumber.toCharArray()){
@@ -195,8 +197,8 @@ public class Convert {
         for(Integer i : inputList){
             if(i >= 0 && i <= 9){
                 builder.append(i);
-            } else if(i <= 35){
-                builder.append(ascii_A + i - 10);
+            } else if(i <= 35 && i >= 10){
+                builder.append((char) (ascii_A + i - 10));
             } else {
                 throw new InputMismatchException(i + " is not a valid number");
             }

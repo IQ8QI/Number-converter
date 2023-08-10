@@ -71,13 +71,12 @@ public class Main {
             value = Convert.romanToDecimal(values.get(0));
         } else {
             value = Convert.nonRomanToDecimal(Convert.inputStringToArrayList(values.get(0)), inputSystem);
-            if(outputSystem == 0){
-                System.out.println(Convert.decimalToRoman(value));
-                System.exit(0);
-            }
         }
-        System.out.println(Convert.decimalToNonRoman(value, outputSystem));
-        System.exit(0);
+        if(outputSystem == 0){
+            System.out.println(Convert.decimalToRoman(value));
+        } else {
+            System.out.println(Convert.arrayListToInputString(Convert.decimalToNonRoman(value, outputSystem)));
+        }
     }
 
     /**

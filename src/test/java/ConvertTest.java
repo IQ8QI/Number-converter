@@ -72,4 +72,17 @@ public class ConvertTest {
         assertThrows(InputMismatchException.class, () -> Convert.nonRomanToDecimal(Arrays.asList(35, 29, 4, 7, 16), 34));
         assertThrows(InputMismatchException.class, () -> Convert.nonRomanToDecimal(Arrays.asList(9, 4, 31, -5, 15), 32));
     }
+
+    @Test
+    @DisplayName("Testing Convert.decimalToNonRoman")
+    void testDecimalToNonRoman(){
+        assertEquals(Arrays.asList(6,2,6,1), Convert.decimalToNonRoman(4591, 9), "10-base 4591 is 9-base 6261");
+        assertEquals(Arrays.asList(2,1,1,3,1,0), Convert.decimalToNonRoman(2420, 4), "10-base 2420 is 4-base 211200");
+        assertEquals(Arrays.asList(2,1,5), Convert.decimalToNonRoman(110, 7), "10-base 110 is 7-base 215");
+        assertEquals(Arrays.asList(4,0,1), Convert.decimalToNonRoman(4625, 34), "10-base 4625 is 34-base 401");
+        assertEquals(Arrays.asList(3,33,1), Convert.decimalToNonRoman(4591, 34), "10-base 4591 is 34-base 3X1");
+        assertThrows(InputMismatchException.class, () -> Convert.decimalToNonRoman(5148, 0));
+        assertThrows(InputMismatchException.class, () -> Convert.decimalToNonRoman(9456, 37));
+        assertThrows(InputMismatchException.class, () -> Convert.decimalToNonRoman(51, -4));
+    }
 }

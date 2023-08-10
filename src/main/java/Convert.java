@@ -238,7 +238,7 @@ public class Convert {
      * @return ArrayList<Integer> with continuous digits
      */
     public static List<Integer> decimalToNonRoman(int inputValue, int outputSystem){
-        if(outputSystem < 1 || outputSystem > 34)
+        if(outputSystem < 1 || outputSystem > 36)
             throw new InputMismatchException("Impossible to translate number to " + outputSystem + "-base system");
 
         List<Integer> result = new ArrayList<>();

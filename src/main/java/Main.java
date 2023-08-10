@@ -22,7 +22,7 @@ public class Main {
          * Display help if input is empty or user asks for help
          */
         if(parameters.isEmpty() || values.isEmpty() || parameters.get(0).charAt(0) == 'H' || parameters.get(0).charAt(0) == '?')
-            displayManual(-1);
+            displayManual();
 
         /*
          * Set input system and output system
@@ -82,11 +82,11 @@ public class Main {
     /**
      * Display manual for user and exit, same as README.md
      */
-    public static void displayManual(int status){
+    public static void displayManual(){
         System.out.println("""
                 # Number converter
                 Simple CLI tool to convert number between Roman and any other system number<br>
-                Supported number systems: binary, octal, decimal, hexadecimal, Roman and all other systems between 1 and 36<br>
+                Supported number systems: binary, octal, decimal, hexadecimal, Roman and all other systems between 1 and 36
                 Roman numbers supported only between 1 and 3999
                                 
                 ## Usage
@@ -96,9 +96,9 @@ public class Main {
 
 
                 ### Supported bases shortcuts
-                binary `-b --binary`\\
-                octal `-o --octal`\\
-                decimal `-d --decimal`\\
+                binary `-b --binary`
+                octal `-o --octal`
+                decimal `-d --decimal`
                 hexadecimal `-x --hexadecimal`
 
                 ## Examples
@@ -134,6 +134,6 @@ public class Main {
                     numconv --help
                     numconv -h
                 """);
-        System.exit(status);
+        System.exit(0);
     }
 }

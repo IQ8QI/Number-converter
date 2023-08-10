@@ -1,7 +1,7 @@
 # TODO
- - Finnish writing the program by using all the methods inside Main.java
- - Write tests for finished program
  - Create installer or manual installation instruction for Windows and Linux
+ - <del>Write tests for finished program</del>
+ - <del>Finnish writing the program by using all the methods inside Main.java</del>
  - <del>Write more test cases in JUnit to test all functions in Convert.java</del>
  - <del>Add testing base with JUnit and Maven</del>
  - <del>Create function to convert decimal to roman</del>

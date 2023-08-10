@@ -48,7 +48,7 @@ Display help
     numconv --help
     numconv -h
 
-## Instalation
+## Installation
 
 ### Linux
     

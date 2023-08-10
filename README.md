@@ -1,10 +1,25 @@
 # Number converter
 Simple CLI tool to convert number between Roman and any other system number<br>
-Supported number systems: binary, octal, decimal, hexadecimal, Roman and all other systems between 1 and 34<br>
+Supported number systems: binary, octal, decimal, hexadecimal, Roman and all other systems between 1 and 36<br>
 Roman numbers supported only between 1 and 3999
 
 # Usage
     numconv [input system] [output system] [input number]
+
+or
+
+    numconv [input system] [input number] [output system]
+
+or
+
+    numconv [input number] [input system] [output system]
+
+
+## Supported bases shortcuts
+binary `-b --binary`\
+octal `-o --octal`\
+decimal `-d --decimal`\
+hexadecimal `-x --hexadecimal`
 
 # Examples
 Convert Roman number to decimal

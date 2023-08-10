@@ -151,7 +151,7 @@ public class Convert {
         return builder.toString();
     }
 
-    public static final short ascii_1 = 48;
+    public static final short ascii_0 = 48;
     public static final short ascii_9 = 57;
     public static final short ascii_A = 65;
     public static final short ascii_Z = 90;
@@ -169,12 +169,12 @@ public class Convert {
         List<Integer> result = new ArrayList<>();
         for(Character c : inputNumber.toCharArray()){
             i = (int) c;
-            if(i >= ascii_1 && i <= ascii_9){
-                result.add(11 + i - ascii_1);
+            if(i >= ascii_0 && i <= ascii_9){
+                result.add(i - ascii_0);
             } else if(i >= ascii_a && i <= ascii_z){
-                result.add(11 + i - ascii_a);
+                result.add(10 + i - ascii_a);
             } else if(i >= ascii_A && i <= ascii_Z){
-                result.add(11 + i - ascii_A);
+                result.add(10 + i - ascii_A);
             } else {
                 throw new InputMismatchException("Incorrect input at " + (char) i);
             }
@@ -187,7 +187,7 @@ public class Convert {
      * Numbers above 9 becomes letters starting at A.
      * For example [2, 3, 14, 1, 18] -> "23D1H".
      * Throws InputMismatchException if number is 34 or bigger.
-     * @param inputList list of integers to be translated into string, value cannot exceed 33
+     * @param inputList list of integers to be translated into string, value cannot exceed 35
      * @return string expressing values from list
      */
     public static String arrayListToInputString(List<Integer> inputList){
@@ -195,7 +195,7 @@ public class Convert {
         for(Integer i : inputList){
             if(i >= 0 && i <= 9){
                 builder.append(i);
-            } else if(i <= 34){
+            } else if(i <= 35){
                 builder.append(ascii_A + i - 10);
             } else {
                 throw new InputMismatchException(i + " is not a valid number");

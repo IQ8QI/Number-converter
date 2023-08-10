@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,6 +20,7 @@ public class ConvertTest {
         assertThrows(InputMismatchException.class, () -> Convert.decimalToRoman(4000), "4000 is to big for program to convert");
         assertThrows(InputMismatchException.class, () -> Convert.decimalToRoman(0), "0 is to small to be converted");
     }
+
     @Test
     @DisplayName("Testing Convert.romanToDecimal function")
     void testRomanToDecimal(){
@@ -29,5 +31,14 @@ public class ConvertTest {
         assertThrows(InputMismatchException.class, () -> Convert.romanToDecimal("MMMM"), "Number MMMM is to big to be converted");
         assertThrows(InputMismatchException.class, () -> Convert.romanToDecimal("CCH"), "H is not part of Roman system");
         assertThrows(InputMismatchException.class, () -> Convert.romanToDecimal("XX1"), "1 is not part of Roman system");
+    }
+
+    @Test
+    @DisplayName("Testing Convert.inputStringToArrayList")
+    void testInputStringToArrayList(){
+        assertEquals(Arrays.asList(2,3,13,1,17), Convert.inputStringToArrayList("23D1H"), "23D1H should be converted to (2,3,13,1,17)");
+        assertEquals(Arrays.asList(0,1,2,3,4,5,6,7,8,9), Convert.inputStringToArrayList("0123456789"), "");
+        assertEquals(Arrays.asList(10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35), Convert.inputStringToArrayList("abcdefghijklmnopqrstuvwxyz"), "abcdefghijklmnopqrstuwxyz should be converted to (10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33)");
+        assertEquals(Arrays.asList(10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35), Convert.inputStringToArrayList("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), "ABCDEFGHIJKLMNOPQRSTUWXYZ should be converted to (10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33)");
     }
 }

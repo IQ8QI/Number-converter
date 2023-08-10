@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         /*
          * Divide inputs for parameters and values and store them in separate lists
+         * All parameters and values are in upper case
          */
         for(int i = 0; i < args.length; i++)
             args[i] = args[i].toUpperCase();
@@ -18,10 +19,10 @@ public class Main {
                 values.add(arg);
 
         /*
-         * Display help if input is incorrect, or if user asks for help
+         * Display help if input is empty or user asks for help
          */
-        if(parameters.isEmpty() || parameters.get(0).charAt(0) == 'H' || parameters.get(0).charAt(0) == '?')
-            displayManual();
+        if(parameters.isEmpty() || values.isEmpty() || parameters.get(0).charAt(0) == 'H' || parameters.get(0).charAt(0) == '?')
+            displayManual(-1);
 
         /*
          * Set input system and output system
@@ -37,7 +38,7 @@ public class Main {
             inputSystem = 8;
         else if(parameters.get(0).charAt(0) == 'D')
             inputSystem = 10;
-        else if(parameters.get(0).charAt(0) == 'H')
+        else if(parameters.get(0).charAt(0) == 'X')
             inputSystem = 16;
         else
             inputSystem = Integer.parseInt(parameters.get(0));
@@ -50,13 +51,10 @@ public class Main {
             outputSystem = 8;
         else if(parameters.get(1).charAt(0) == 'D')
             outputSystem = 10;
-        else if(parameters.get(1).charAt(0) == 'H')
+        else if(parameters.get(1).charAt(0) == 'X')
             outputSystem = 16;
         else
             outputSystem = Integer.parseInt(parameters.get(1));
-
-        System.out.println("parameters " + parameters);
-        System.out.println("values " + values);
 
     /*
      * Decide witch conversion methods to use, in order to convert the number
@@ -67,52 +65,76 @@ public class Main {
             System.out.println(values.get(0));
             System.exit(0);
         }
-        
+
+        int value;
         if(inputSystem == 0){
-            int value = Convert.romanToDecimal(values.get(0));
+            value = Convert.romanToDecimal(values.get(0));
+        } else {
+            value = Convert.nonRomanToDecimal(Convert.inputStringToArrayList(values.get(0)), inputSystem);
+            if(outputSystem == 0){
+                System.out.println(Convert.decimalToRoman(value));
+                System.exit(0);
+            }
         }
+        System.out.println(Convert.decimalToNonRoman(value, outputSystem));
+        System.exit(0);
     }
 
     /**
      * Display manual for user and exit, same as README.md
      */
-    public static void displayManual(){
+    public static void displayManual(int status){
         System.out.println("""
                 # Number converter
-                Simple CLI tool to convert number between Roman and any other system number
-                Supported number systems: binary, octal, decimal, hexadecimal, Roman and all other systems between 1 and 34
+                Simple CLI tool to convert number between Roman and any other system number<br>
+                Supported number systems: binary, octal, decimal, hexadecimal, Roman and all other systems between 1 and 36<br>
                 Roman numbers supported only between 1 and 3999
                                 
-                # Usage
+                ## Usage
                     numconv [input system] [output system] [input number]
-                                
-                # Examples
+                    numconv [input system] [input number] [output system]
+                    numconv [input number] [input system] [output system]
+
+
+                ### Supported bases shortcuts
+                binary `-b --binary`\\
+                octal `-o --octal`\\
+                decimal `-d --decimal`\\
+                hexadecimal `-x --hexadecimal`
+
+                ## Examples
                 Convert Roman number to decimal
+
                     numconv -r MMMCV -10
                     numconv --roman --decimal CCVI
-                                
+
                 Convert octal number to Roman
+
                     numconv --octal --roman 45613752
                     numconv 456103752 -8 -r
-                                
+
                 Convert decimal number to Roman
+
                     numconv --decimal --roman 3420
                     numconv -10 -r 14
-                                
+
                 Convert 17 based system number to 4 based system number
+
                     numconv -17 43g9a3 -4
                     numconv 938e7c2b --17 -4
-                                
+
                 Convert 5 based system number to 34 based system number
+
                     numconv --5 --34 12342242342
                     numconv 40441232441 -5 -34
-                                
+
                 Display help
+
                     numconv
                     numconv ?
                     numconv --help
                     numconv -h
                 """);
-        System.exit(0);
+        System.exit(status);
     }
 }
